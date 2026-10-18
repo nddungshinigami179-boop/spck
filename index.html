@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRZSPY</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- sidebar -->
+    <aside class="sidebar">
+        <a class="logo" href="#">
+            <span class="logo-icon">C</span>
+            <span>CRZ<span class="green">SPY</span></span>
+        </a>
+
+        <p class="menu-label">MENU</p>
+        <nav>
+            <a href="#home" class="nav-link active">
+                <span>⌂</span> Trang chủ
+            </a>
+            <a href="#library" class="nav-link">
+                <span>♫</span> Khám phá nhạc
+            </a>
+            <a href="#favorites" class="nav-link">
+                <span>♡</span> Yêu thích
+            </a>
+            <a href="#playlists" class="nav-link">
+                <span>▤</span> Playlist của tôi
+            </a>
+            <a href="#history" class="nav-link">
+                <span>◷</span> Lịch sử nghe
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <p>YOUR MUSIC.</p>
+            <p class="green">YOUR VIBE.</p>
+        </div>
+    </aside>
+
+    <!-- main -->
+    <main class="main-content" id="home">
+        <!-- topbar -->
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">YOUR PERSONAL MUSIC SPACE</p>
+                <h1>Feel the <span class="green">music.</span></h1>
+            </div>
+
+            <label class="search-box">
+                <span>⌕</span>
+                <input id="searchInput"
+                       type="search"
+                       placeholder="Tìm bài hát, nghệ sĩ..."
+                       aria-label="Tìm bài hát hoặc nghệ sĩ">
+                <button id="searchButton" type="button">Tìm</button>
+            </label>
+        </header>
+
+        <!-- hero -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="pill">✦ DISCOVER YOUR SOUND</span>
+                <h2>Music that<br>moves <span class="green">you.</span></h2>
+                <p>Khám phá những giai điệu mới và tạo nên không gian âm nhạc của riêng bạn.</p>
+                <button id="exploreButton" class="primary-button">
+                    ♫ Khám phá ngay
+                </button>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+                <div class="art-ring ring-one"></div>
+                <div class="art-ring ring-two"></div>
+                <div class="art-disc">C</div>
+                <div class="art-dot"></div>
+            </div>
+        </section>
+
+        <section class="music-section" id="library">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">HANDPICKED FOR YOU</p>
+                    <h2>Khám phá âm nhạc</h2>
+                </div>
+                <button id="refreshButton" class="outline-button">
+                    ↻ Làm mới
+                </button>
+            </div>
+
+            <p id="statusMessage" class="status-message" role="status">
+                Đang tải danh sách bài hát...
+            </p>
+
+            <div id="musicGrid" class="music-grid"></div>
+        </section>
+
+        <section class="music-section favorites-section" id="favorites">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR COLLECTION</p>
+                    <h2>Bài hát yêu thích <span class="green">♡</span></h2>
+                </div>
+            </div>
+            <div id="favoritesGrid" class="music-grid"></div>
+            <p id="favoritesEmpty" class="empty-message">
+                Nhấn biểu tượng ♡ ở một bài hát để thêm vào đây.
+            </p>
+        </section>
+
+        <section class="music-section" id="playlists">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR PERSONAL COLLECTION</p>
+                    <h2>Playlist của tôi <span class="green">♫</span></h2>
+                </div>
+                <button id="createPlaylistButton" class="primary-button">
+                    + Tạo playlist
+                </button>
+            </div>
+
+            <div class="playlist-toolbar">
+                <select id="playlistSelect" aria-label="Chọn playlist">
+                    <option value="">Chọn playlist</option>
+                </select>
+                <button id="addToPlaylistButton" class="outline-button">
+                    + Thêm bài đang phát
+                </button>
+                <button id="deletePlaylistButton" class="outline-button">
+                    Xóa playlist
+                </button>
+            </div>
+
+            <p id="playlistMessage" class="status-message" role="status"></p>
+            <div id="playlistTracks" class="music-grid"></div>
+        </section>
+
+        <section class="music-section" id="history">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">RECENTLY PLAYED</p>
+                    <h2>Nghe gần đây</h2>
+                </div>
+                <button id="clearHistoryButton" class="outline-button">
+                    Xóa lịch sử
+                </button>
+            </div>
+
+            <div id="historyTracks" class="music-grid"></div>
+            <p id="historyEmpty" class="empty-message">
+                Những bài hát bạn phát sẽ xuất hiện tại đây.
+            </p>
+        </section>
+
+        <footer>
+            <p>© 2026 CRZSPY · Music for your vibe.</p>
+            <p>Dữ liệu âm nhạc và âm thanh được cung cấp bởi Jamendo API.</p>
+        </footer>
+    </main>
+
+    <section class="player" aria-label="Trình phát nhạc">
+        <div class="now-playing">
+            <img id="playerCover"
+                 src="https://placehold.co/100x100/111111/39ff88?text=C"
+                 alt="Ảnh bìa bài hát">
+            <div class="track-info">
+                <h3 id="playerTitle">Chưa chọn bài hát</h3>
+                <p id="playerArtist">Chọn một bài để bắt đầu</p>
+            </div>
+            <button id="playerFavorite" class="icon-button" aria-label="Thêm bài hát vào yêu thích">♡</button>
+        </div>
+
+        <div class="player-center">
+            <div class="player-controls">
+                <button id="previousButton" class="control-button" aria-label="Bài trước">⏮</button>
+                <button id="playButton" class="play-button" aria-label="Phát nhạc">▶</button>
+                <button id="nextButton" class="control-button" aria-label="Bài tiếp theo">⏭</button>
+            </div>
+
+            <button id="shuffleButton"
+                class="control-button"
+                aria-label="Bật phát ngẫu nhiên"
+                title="Phát ngẫu nhiên">⤨</button>
+
+            <button id="repeatButton"
+                class="control-button"
+                aria-label="Chế độ lặp: tắt"
+                title="Lặp: tắt">↻</button>
+
+            <div class="progress-row">
+                <span id="currentTime">0:00</span>
+                <input id="progressBar" type="range" min="0" max="100" value="0" aria-label="Tiến độ bài hát">
+                <span id="duration">0:00</span>
+            </div>
+        </div>
+
+        <div class="volume-control">
+            <span>♫</span>
+            <input id="volumeBar" type="range" min="0" max="1" step="0.01" value="0.7" aria-label="Âm lượng">
+        </div>
+    </section>
+
+    <audio id="audioPlayer" preload="metadata"></audio>
+    
+    <script src="app.js"></script>
+    <script src="upgrade.js"></script>
+</body>
+</html>
