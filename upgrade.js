@@ -1,3 +1,4 @@
+// cau truc IFFE(tranh trung bien global)
 (() => {
     //Upgrade
     const storageKeys = {

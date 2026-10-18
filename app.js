@@ -32,7 +32,7 @@ let favoriteIds = new Set(
     JSON.parse(localStorage.getItem("crzspyFavorites") || "[]")
 );
 
-// Định dạng s => m
+// Định dạng s => m:s
 function formatTime(seconds) {
     if (!Number.isFinite(seconds) || seconds < 0) {
         return "0:00";
@@ -143,7 +143,6 @@ function renderTracks(list) {
         card.className = "music-card";
 
         const isFavorite = favoriteIds.has(String(track.id));
-
         card.innerHTML = `
             <div class="cover-wrap">
                 <img
