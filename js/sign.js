@@ -267,8 +267,6 @@ try {
     localStorage.removeItem(currentUserKey);
 }
 
-const currentUserKey = "crzspyCurrentUser";
-
 function getCurrentUser() {
     try {
         const user = JSON.parse(
@@ -289,7 +287,7 @@ const currentUser = getCurrentUser();
 
 // Chưa đăng nhập thì quay về trang đăng nhập
 if (!currentUser) {
-    window.location.replace("sign.html");
+    window.location.href("sign.html");
 } 
 else {
     // Hiển thị thông tin tài khoản
@@ -303,10 +301,17 @@ else {
     // Xử lý đăng xuất
     const logoutButton = document.getElementById("logoutButton");
 
-    if (logoutButton) {
-        logoutButton.addEventListener("click", () => {
-            localStorage.removeItem(currentUserKey);
-            window.location.replace("sign.html");
-        });
-    }
+    if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+        const confirmLogout = confirm(
+            'Bạn có chắc chắn muốn đăng xuất không?'
+        );
+        if (confirmLogout) {
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('user');
+            alert('Bạn đã đăng xuất!');
+            window.location.href = 'login.html';
+        }
+    });
+}
 }
