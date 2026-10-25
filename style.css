@@ -122,6 +122,32 @@ input:focus-visible {
     background: #39ff8810;
 }
 
+.account-menu {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 10px;
+}
+
+#accountName {
+    color: #1ed760;
+    font-size: 14px;
+}
+
+#logoutButton {
+    padding: 9px 14px;
+    color: #1ed760;
+    background: transparent;
+    border: 1px solid #1ed760;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#logoutButton:hover {
+    color: #080b09;
+    background: #1ed760;
+}
+
 .sidebar-bottom {
     position: absolute;
     bottom: 25px;
